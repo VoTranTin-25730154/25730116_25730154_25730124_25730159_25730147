@@ -1,0 +1,12 @@
+*
+
+!Common.h
+!Tetromino.h
+!Render.h
+!GameLogic.h
+!Render.cpp
+!GameLogic.cpp
+!Tetris.cpp
+
+!.gitignore
+!README.md
