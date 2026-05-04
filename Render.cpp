@@ -78,8 +78,11 @@ void playGameSound(int type) {
     switch (type) {
     case 0:
         Beep(300, 50); break;
-    }
     case 1:
         Beep(800, 50); break;
+    case 2:
+        Beep(1000, 150); break;
+    case 3:
+        Beep(1300, 250); break;
     }
 }
