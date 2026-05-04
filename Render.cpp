@@ -73,3 +73,10 @@ void drawScore(int score) {
     gotoxy((BOARD_WIDTH + 5) * 2, 7);
     cout << "HIGH SCORE: " << highScore;
 }
+
+void playGameSound(int type) {
+    switch (type) {
+    case 0:
+        Beep(300, 50); break;
+    }
+}
