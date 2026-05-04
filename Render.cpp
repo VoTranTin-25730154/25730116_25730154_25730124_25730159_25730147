@@ -51,3 +51,17 @@ void clearPiece(int type, int rotation, int x, int y) {
         }
     }
 }
+
+void drawBoard() {
+    for (int i = 0; i < BOARD_HEIGHT; i++) {
+        for (int j = 0; j < BOARD_WIDTH; j++) {
+            gotoxy(j * 2 + OFFSET_X, i + OFFSET_Y);
+            if (board[i][j] == 1) {
+                cout << "[]";
+            }
+            else {
+                cout << "  ";
+            }
+        }
+    }
+}
