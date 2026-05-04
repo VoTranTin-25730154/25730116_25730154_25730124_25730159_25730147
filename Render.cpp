@@ -65,3 +65,11 @@ void drawBoard() {
         }
     }
 }
+
+void drawScore(int score) {
+    gotoxy((BOARD_WIDTH + 5) * 2, 5);
+    cout << "SCORE: " << score;
+
+    gotoxy((BOARD_WIDTH + 5) * 2, 7);
+    cout << "HIGH SCORE: " << highScore;
+}
