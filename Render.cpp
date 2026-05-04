@@ -79,4 +79,7 @@ void playGameSound(int type) {
     case 0:
         Beep(300, 50); break;
     }
+    case 1:
+        Beep(800, 50); break;
+    }
 }
