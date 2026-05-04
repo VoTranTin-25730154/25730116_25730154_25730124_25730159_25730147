@@ -14,3 +14,18 @@ void gotoxy(int x, int y) {
     coord.Y = y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
+
+void drawBoundary() {
+    for (int i = 0; i <= (BOARD_WIDTH + 2) * 2 - 1; i++) {
+        gotoxy(i, 0); cout << "#";
+        gotoxy(i, BOARD_HEIGHT + 1); cout << "#";
+    }
+
+    for (int i = 1; i <= BOARD_HEIGHT; i++) {
+        gotoxy(0, i); cout << "#";
+        gotoxy(1, i); cout << "#";
+
+        gotoxy((BOARD_WIDTH + 1) * 2, i); cout << "#";
+        gotoxy((BOARD_WIDTH + 1) * 2 + 1, i); cout << "#";
+    }
+}
