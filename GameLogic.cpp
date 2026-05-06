@@ -30,3 +30,13 @@ bool checkCollision(int type, int rotation, int x, int y) {
     }
     return false;
 }
+
+void lockPiece(int type, int rotation, int x, int y) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (TETROMINOES[type][rotation][i][j] == 1) {
+                board[y + i][x + j] = 1;
+            }
+        }
+    }
+}
