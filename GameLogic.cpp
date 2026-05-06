@@ -65,4 +65,9 @@ void handleClearRows() {
             i++;
         }
     }
+    if (rowsClearedInThisTurn > 0) {
+        score += rowsClearedInThisTurn * 100;
+
+        playGameSound(rowsClearedInThisTurn);
+    }
 }
