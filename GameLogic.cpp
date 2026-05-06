@@ -40,3 +40,17 @@ void lockPiece(int type, int rotation, int x, int y) {
         }
     }
 }
+
+void handleClearRows() {
+    int rowsClearedInThisTurn = 0;
+
+    for (int i = BOARD_HEIGHT - 1; i >= 0; i--) {
+        bool isFull = true;
+        for (int j = 0; j < BOARD_WIDTH; j++) {
+            if (board[i][j] == 0) {
+                isFull = false;
+                break;
+            }
+        }
+    }
+}
