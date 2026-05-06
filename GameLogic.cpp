@@ -21,6 +21,10 @@ bool checkCollision(int type, int rotation, int x, int y) {
                 if (nextX < 0 || nextX >= BOARD_WIDTH || nextY >= BOARD_HEIGHT) {
                     return true;
                 }
+
+                if (nextY >= 0 && board[nextY][nextX] == 1) {
+                    return true;
+                }
             }
         }
     }
