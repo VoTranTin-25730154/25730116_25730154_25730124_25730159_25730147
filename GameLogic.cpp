@@ -71,3 +71,9 @@ void handleClearRows() {
         playGameSound(rowsClearedInThisTurn);
     }
 }
+
+void resetBoard() {
+    for (int i = 0; i < BOARD_HEIGHT; i++)
+        for (int j = 0; j < BOARD_WIDTH; j++)
+            board[i][j] = 0;
+}
