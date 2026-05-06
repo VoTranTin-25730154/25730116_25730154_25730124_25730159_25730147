@@ -52,5 +52,17 @@ void handleClearRows() {
                 break;
             }
         }
+        if (isFull) {
+            rowsClearedInThisTurn++;
+            for (int k = i; k > 0; k--) {
+                for (int j = 0; j < BOARD_WIDTH; j++) {
+                    board[k][j] = board[k - 1][j];
+                }
+            }
+            for (int j = 0; j < BOARD_WIDTH; j++) {
+                board[0][j] = 0;
+            }
+            i++;
+        }
     }
 }
