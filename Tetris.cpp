@@ -47,6 +47,12 @@ int main()
                 if (!checkCollision(type, rot, x + 1, y)) {
                     x++;
                 }
+				     case KEY_UP:
+            {
+                int nextRot = (rot + 1) % 4;
+                if (!checkCollision(type, nextRot, x, y)) rot = nextRot;
+                break;
+            }
                 break;
             case KEY_DOWN:
                 if (!checkCollision(type, rot, x, y + 1)) y++;
