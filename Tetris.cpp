@@ -14,6 +14,7 @@ int main()
     bool isSpecialKey = false;
     bool isRunning = true;
     bool isPaused = false;
+ int type = 0, rot = 0, x = 5, y = 0;
 
     if (_kbhit()) {
         char key = _getch();
@@ -32,7 +33,28 @@ int main()
             }
             else if (key == KEY_ESC) isRunning = false;
         }
+  
+        if (!isPaused && isRunning) {
+            clearPiece(type, rot, x, y);
+
+            switch (key) {
+            case KEY_LEFT:
+                if (!checkCollision(type, rot, x - 1, y)) {
+                    x--;
+                }
+                break;
+            case KEY_RIGHT:
+                if (!checkCollision(type, rot, x + 1, y)) {
+                    x++;
+                }
+                break;
+            case KEY_DOWN:
+                if (!checkCollision(type, rot, x, y + 1)) y++;
+                break;
+            }
+            drawPiece(type, rot, x, y);
+        }
+        isSpecialKey = false;
     }
 	
 	return 0;
-}
