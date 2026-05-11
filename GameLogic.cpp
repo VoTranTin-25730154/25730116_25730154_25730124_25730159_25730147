@@ -14,3 +14,12 @@ void loadHighScore() {
     }
     else highScore = 0;
 }
+
+void saveHighScore() {
+    if (score > highScore) highScore = score;
+    ofstream file("highscore.txt");
+    if (file.is_open()) {
+        file << highScore;
+        file.close();
+    }
+}
