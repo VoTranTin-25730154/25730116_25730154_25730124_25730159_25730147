@@ -30,5 +30,32 @@ int main()
     drawScore(score);
     drawPiece(type, rot, x, y);
 
+    while (isRunning) {
+        timer++;
+        if (timer >= speed) {
+            clearPiece(type, rot, x, y);
+            if (!checkCollision(type, rot, x, y + 1)) y++;
+            else {
+                drawPiece(type, rot, x, y);
+                lockPiece(type, rot, x, y);
+
+                playGameSound(0);
+
+                handleClearRows();
+                drawBoard();
+                drawScore(score);
+
+                x = 5; y = 0;
+                type = rand() % 7;
+                rot = 0;
+
+                if (checkCollision(type, rot, x, y)) isRunning = false;
+            }
+            drawPiece(type, rot, x, y);
+            timer = 0;
+        }
+        Sleep(20);
+    }
+
     return 0;
 }
