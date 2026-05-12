@@ -17,5 +17,18 @@ int main()
     bool isKeepPlaying = true;
     bool isSpecialKey = false;
 
+    score = 0;
+    int timer = 0;
+    int type = 0, rot = 0, x = 5, y = 0;
+
+    bool isRunning = true;
+    bool isPaused = false;
+
+    system("cls");
+    drawBoundary();
+    loadHighScore();
+    drawScore(score);
+    drawPiece(type, rot, x, y);
+
     return 0;
 }
