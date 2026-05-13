@@ -13,6 +13,7 @@ int main()
     srand(time(0));
 
     int speed = 25;
+    int level = 1;
 
     bool isKeepPlaying = true;    
     bool isSpecialKey = false;
@@ -28,7 +29,7 @@ int main()
         system("cls");
         drawBoundary();
         loadHighScore();
-        drawScore(score);
+        drawScore(score, level);
         drawPiece(type, rot, x, y);
 
         while (isRunning) {
@@ -43,7 +44,7 @@ int main()
 
                         playGameSound(0);
 
-                        handleClearRows();
+                        handleClearRows(speed, level);
                         drawBoard();
 
                         x = 5; y = 0;
@@ -68,7 +69,7 @@ int main()
                     if (key == 'p' || key == 'P') {
                         isPaused = !isPaused;
 
-                        gotoxy((BOARD_WIDTH + 5) * 2, 10);
+                        gotoxy((BOARD_WIDTH + 5) * 2, 11);
                         if (isPaused) cout << "PAUSED";
                         else cout << "      ";
                     }

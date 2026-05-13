@@ -3,6 +3,7 @@
 #include "Common.h"
 #include "Tetromino.h"
 #include "Render.h"
+#include "GameLogic.h"
 
 using namespace std;
 
@@ -41,7 +42,7 @@ void lockPiece(int type, int rotation, int x, int y) {
     }
 }
 
-void handleClearRows() {
+void handleClearRows(int& speed, int& level) {
     int rowsClearedInThisTurn = 0;
 
     for (int i = BOARD_HEIGHT - 1; i >= 0; i--) {
@@ -68,7 +69,8 @@ void handleClearRows() {
     }
     if (rowsClearedInThisTurn > 0) {
         score += rowsClearedInThisTurn * 100;
-        drawScore(score);
+        updateDifficulty(speed, level);
+        drawScore(score, level);
         playGameSound(rowsClearedInThisTurn);
     }
 }
@@ -93,4 +95,10 @@ void saveHighScore() {
         file << highScore;
         file.close();
     }
+}
+
+void updateDifficulty(int& speed, int& level) {
+    level = (score / 200) + 1;
+
+    speed = (25 - level * 2 > 5) ? 25 - level * 2 : 5;
 }
