@@ -13,6 +13,7 @@ int main()
     srand(time(0));
 
     int speed = 25;
+    int level = 1;
 
     bool isKeepPlaying = true;    
     bool isSpecialKey = false;
@@ -28,7 +29,7 @@ int main()
         system("cls");
         drawBoundary();
         loadHighScore();
-        drawScore(score);
+        drawScore(score, level);
         drawPiece(type, rot, x, y);
 
         while (isRunning) {
@@ -43,9 +44,8 @@ int main()
 
                         playGameSound(0);
 
-                        handleClearRows();
+                        handleClearRows(speed, level);
                         drawBoard();
-                        drawScore(score);
 
                         x = 5; y = 0;
                         type = rand() % 7;
@@ -69,7 +69,7 @@ int main()
                     if (key == 'p' || key == 'P') {
                         isPaused = !isPaused;
 
-                        gotoxy((BOARD_WIDTH + 5) * 2, 10);
+                        gotoxy((BOARD_WIDTH + 5) * 2, 11);
                         if (isPaused) cout << "PAUSED";
                         else cout << "      ";
                     }
@@ -80,23 +80,23 @@ int main()
                     clearPiece(type, rot, x, y);
 
                     switch (key) {
-                    case KEY_LEFT:
+                    case KEY_LEFT: case 'a': case 'A':
                         if (!checkCollision(type, rot, x - 1, y)) {
                             x--;
                         }
                         break;
-                    case KEY_RIGHT:
+                    case KEY_RIGHT: case 'd': case 'D':
                         if (!checkCollision(type, rot, x + 1, y)) {
                             x++;
                         }
                         break;
-                    case KEY_UP:
+                    case KEY_UP: case 'w': case 'W':
                     {
                         int nextRot = (rot + 1) % 4;
                         if (!checkCollision(type, nextRot, x, y)) rot = nextRot;
                         break;
                     }
-                    case KEY_DOWN:
+                    case KEY_DOWN: case 's': case 'S':
                         if (!checkCollision(type, rot, x, y + 1)) y++;
                         break;
                     }
@@ -120,7 +120,6 @@ int main()
         while (waitingForInput) {
             char choice = _getch();
             if (choice == 'r' || choice == 'R') {
-                isRunning = true;
                 resetBoard();
                 drawBoard();
                 waitingForInput = false;

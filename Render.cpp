@@ -66,12 +66,15 @@ void drawBoard() {
     }
 }
 
-void drawScore(int score) {
+void drawScore(int score, int level) {
     gotoxy((BOARD_WIDTH + 5) * 2, 5);
     cout << "SCORE: " << score;
 
     gotoxy((BOARD_WIDTH + 5) * 2, 7);
     cout << "HIGH SCORE: " << highScore;
+
+    gotoxy((BOARD_WIDTH + 5) * 2, 9);
+    cout << "LEVEL: " << level;
 }
 
 void playGameSound(int type) {
