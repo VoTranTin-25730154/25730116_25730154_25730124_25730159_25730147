@@ -68,15 +68,13 @@ void handleClearRows() {
     }
     if (rowsClearedInThisTurn > 0) {
         score += rowsClearedInThisTurn * 100;
-
+        drawScore(score);
         playGameSound(rowsClearedInThisTurn);
     }
 }
 
 void resetBoard() {
-    for (int i = 0; i < BOARD_HEIGHT; i++)
-        for (int j = 0; j < BOARD_WIDTH; j++)
-            board[i][j] = 0;
+    memset(board, 0, sizeof(board));
 }
 
 void loadHighScore() {

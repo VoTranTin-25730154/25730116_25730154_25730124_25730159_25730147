@@ -45,7 +45,6 @@ int main()
 
                         handleClearRows();
                         drawBoard();
-                        drawScore(score);
 
                         x = 5; y = 0;
                         type = rand() % 7;
