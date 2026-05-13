@@ -80,23 +80,23 @@ int main()
                     clearPiece(type, rot, x, y);
 
                     switch (key) {
-                    case KEY_LEFT:
+                    case KEY_LEFT: case 'a': case 'A':
                         if (!checkCollision(type, rot, x - 1, y)) {
                             x--;
                         }
                         break;
-                    case KEY_RIGHT:
+                    case KEY_RIGHT: case 'd': case 'D':
                         if (!checkCollision(type, rot, x + 1, y)) {
                             x++;
                         }
                         break;
-                    case KEY_UP:
+                    case KEY_UP: case 'w': case 'W':
                     {
                         int nextRot = (rot + 1) % 4;
                         if (!checkCollision(type, nextRot, x, y)) rot = nextRot;
                         break;
                     }
-                    case KEY_DOWN:
+                    case KEY_DOWN: case 's': case 'S':
                         if (!checkCollision(type, rot, x, y + 1)) y++;
                         break;
                     }
@@ -120,7 +120,6 @@ int main()
         while (waitingForInput) {
             char choice = _getch();
             if (choice == 'r' || choice == 'R') {
-                isRunning = true;
                 resetBoard();
                 drawBoard();
                 waitingForInput = false;
