@@ -52,6 +52,7 @@ void handleClearRows() {
                 break;
             }
         }
+
         if (isFull) {
             rowsClearedInThisTurn++;
             for (int k = i; k > 0; k--) {
@@ -76,4 +77,22 @@ void resetBoard() {
     for (int i = 0; i < BOARD_HEIGHT; i++)
         for (int j = 0; j < BOARD_WIDTH; j++)
             board[i][j] = 0;
+}
+
+void loadHighScore() {
+    ifstream file("highscore.txt");
+    if (file.is_open()) {
+        file >> highScore;
+        file.close();
+    }
+    else highScore = 0;
+}
+
+void saveHighScore() {
+    if (score > highScore) highScore = score;
+    ofstream file("highscore.txt");
+    if (file.is_open()) {
+        file << highScore;
+        file.close();
+    }
 }
